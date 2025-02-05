@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Access Dashboard</title>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('login-form');
+
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+
+          const username = document.getElementById('username-input').value.trim();
+          const password = document.getElementById('password-input').value;
+
+          const credentials = {
+            Enes: 'eneslovesnoor',
+            Noor: 'noorlovesenes'
+          };
+
+          if (credentials[username] === password) {
+            alert('Access Granted!');
+            localStorage.setItem('username', username); // Store user session
+            window.location.href = 'chat.html'; // Redirect to chat page
+          } else {
+            alert('Incorrect username or password. Please try again.');
+          }
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <h1>Login to the Chat</h1>
+    <form id="login-form">
+      <label for="username-input">Username:</label><br>
+      <input type="text" id="username-input" required><br>
+      <label for="password-input">Password:</label><br>
+      <input type="password" id="password-input" required><br><br>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
